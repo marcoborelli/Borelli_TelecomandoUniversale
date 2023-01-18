@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Borelli_TelecomandoUniversale {
-    public class DispositivoBase {
+    public abstract class DispositivoBase {
         private bool _stato;
 
         //properties
@@ -18,11 +18,11 @@ namespace Borelli_TelecomandoUniversale {
             }
         }
 
-        public void Accendi() {
+        public virtual void Accendi() {
             this.Stato = true;
         }
 
-        public void Spegni() {
+        public virtual void Spegni() {
             this.Stato = false;
         }
     }
