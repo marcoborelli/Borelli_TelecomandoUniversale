@@ -10,7 +10,7 @@ namespace Borelli_TelecomandoUniversale {
         private DateTime _dataInstallazione;
         private int _tempAcqua, _tempRiscaldamento, _funzionamento;//0=risc+h20 1=h20
 
-        public Caldaia(string prod, string mod, string numSer, DateTime dataInst) {
+        public Caldaia(string id, string prod, string mod, string numSer, DateTime dataInst) : base(id) {
             this.Produttore = prod;
             this.Modello = mod;
             this.NumeroSerie = numSer;
@@ -25,7 +25,7 @@ namespace Borelli_TelecomandoUniversale {
                 return _produttore;
             }
             set {
-                InserisciSeValido(ref _produttore, value, "Produttore");
+                InserisciSeStringaValida(ref _produttore, value, "Produttore");
             }
         }
         public string Modello {
@@ -33,7 +33,7 @@ namespace Borelli_TelecomandoUniversale {
                 return _modello;
             }
             set {
-                InserisciSeValido(ref _modello, value, "Modello");
+                InserisciSeStringaValida(ref _modello, value, "Modello");
             }
         }
         public string NumeroSerie {
@@ -41,7 +41,7 @@ namespace Borelli_TelecomandoUniversale {
                 return _numSerie;
             }
             set {
-                InserisciSeValido(ref _numSerie, value, "Numero di serie");
+                InserisciSeStringaValida(ref _numSerie, value, "Numero di serie");
             }
         }
         public DateTime DataInstallazione {
@@ -90,13 +90,6 @@ namespace Borelli_TelecomandoUniversale {
                 } else {
                     throw new Exception("Impostare valori accettabili e assicurarsi che la caldaia sia accesa");
                 }
-            }
-        }
-        private void InserisciSeValido(ref string campo, string val, string perErrore) {
-            if (!String.IsNullOrWhiteSpace(val)) {
-                campo = val;
-            } else {
-                throw new Exception($"Inserire il campo \"{perErrore}\" valido");
             }
         }
         public string getStatoFunzionamento() {

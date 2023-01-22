@@ -9,6 +9,9 @@ namespace Borelli_TelecomandoUniversale {
         private float _potenza;
         private int _intensita, _colore;//intensità in lumen, colore in kelvin
 
+        public Lampadina(string id) : base(id) {
+
+        }
         //properties perchè nel 2023 vanno messe.
         public float Potenza {
             get {
@@ -27,7 +30,7 @@ namespace Borelli_TelecomandoUniversale {
                 return _intensita;
             }
             set {
-                SettaSeMaggioreDiZero(ref _intensita, value, "Intensita'");
+                SettaSeMaggioreDiZeroMinoreDiCento(ref _intensita, value, "Intensita'");
             }
         }
         public int Colore {
@@ -35,7 +38,7 @@ namespace Borelli_TelecomandoUniversale {
                 return _colore;
             }
             set {
-                SettaSeMaggioreDiZero(ref _colore, value, "Colore");
+                SettaSeMaggioreDiZeroMinoreDiCento(ref _colore, value, "Colore");
             }
         }
 
@@ -50,15 +53,6 @@ namespace Borelli_TelecomandoUniversale {
                 return true;
             } else {
                 return (l.Potenza == Potenza && l.Intensita == Intensita && l.Colore == Colore);
-            }
-        }
-
-        //funzioni private 
-        protected void SettaSeMaggioreDiZero(ref int campo, int val, string nomeCampo) {
-            if (val > 0 && val < 100) {
-                campo = val;
-            } else {
-                throw new Exception($"Il campo \"{nomeCampo}\" deve essere maggiore di 0 e minore di 100");
             }
         }
 

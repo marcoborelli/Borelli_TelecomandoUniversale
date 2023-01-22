@@ -8,6 +8,23 @@ namespace Borelli_TelecomandoUniversale {
     public class LampadinaDimmerabile : Lampadina {
         private int _intensAtt;
 
+        public LampadinaDimmerabile(string id) : base(id) {
+
+        }
+        //properties
+        public int IntensitaAttuale {
+            get {
+                return _intensAtt;
+            }
+            set {
+                SettaSeMaggioreDiZeroMinoreDiCento(ref _intensAtt, value, "Intensita' attuale");
+            }
+        }
+        //funzioni generali
+        public override string ToString() {
+            return $"{Stato};{Potenza};{Intensita};{Colore};{IntensitaAttuale}";
+        }
+        //funzioni specifiche
         public void Regola(int nuovaIntens) {
             this.IntensitaAttuale = nuovaIntens;
             if (this.IntensitaAttuale < 30) {
@@ -15,19 +32,6 @@ namespace Borelli_TelecomandoUniversale {
             } else {
                 this.Stato = true;
             }
-        }
-
-        public int IntensitaAttuale {
-            get {
-                return _intensAtt;
-            }
-            set {
-                SettaSeMaggioreDiZero(ref _intensAtt, value, "Intensita' attuale");
-            }
-        }
-
-        public override string ToString() {
-            return $"{Stato};{Potenza};{Intensita};{Colore};{IntensitaAttuale}";
         }
     }
 }

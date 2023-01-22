@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Borelli_TelecomandoUniversale {
     internal class Program {
         static void Main(string[] args) {
-            Lampadina l1 = new Lampadina();
+            Lampadina l1 = new Lampadina("Helo");
             TelecomandoUniversale t1 = new TelecomandoUniversale(l1);
             l1.Accendi();
             t1.Spegni();
