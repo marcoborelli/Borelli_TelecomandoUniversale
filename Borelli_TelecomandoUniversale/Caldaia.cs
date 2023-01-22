@@ -11,6 +11,8 @@ namespace Borelli_TelecomandoUniversale {
         private int _tempAcqua, _tempRiscaldamento, _funzionamento;//0=risc+h20 1=h20
 
         public Caldaia(string id, string prod, string mod, string numSer, DateTime dataInst) : base(id) {
+            Accendi();
+
             this.Produttore = prod;
             this.Modello = mod;
             this.NumeroSerie = numSer;
@@ -103,7 +105,6 @@ namespace Borelli_TelecomandoUniversale {
         }
 
         private void inizializzaVariabili() {
-            this.Funzionamento = 0;
             this.TemperaturaAcqua = 21;
             this.TemperaturaRiscaldamento = 21;
         }
